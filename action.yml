@@ -19,8 +19,12 @@ inputs:
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Result'
+  version:
+    description: version
+  files:
+    description: files
+  pwd:
+    description: pwd
 
 runs:
   using: node20

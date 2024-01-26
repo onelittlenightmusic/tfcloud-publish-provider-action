@@ -55,9 +55,14 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 300
           version: v1.0.0
+          orgName: onelittlenightmusic
+          providerName: oaifil
+          keyid: 11111111111111111111
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs }}"
+        run: echo "${{ steps.test-action.outputs.version }}"
+      - name: Print Output2
+        id: output2
+        run: echo "${{ steps.test-action.outputs.pwd }}"

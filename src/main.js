@@ -13,7 +13,7 @@ async function run() {
     const ghtoken = process.env.GHTOKEN // Set GitHub API token
     const orgName = core.getInput('orgName', { required: true })
     const providerName = core.getInput('providerName', { required: true })
-    const githubRepo = core.getInput('githubRepo', { required: true })
+    // const githubRepo = core.getInput('githubRepo', { required: true })
 
     const version = core.getInput('version', { required: true })
     const keyid = core.getInput('keyid', { required: true })
@@ -23,12 +23,13 @@ async function run() {
     core.debug(`Key id = ${keyid}`)
 
     // Current directory
-    const directoryPath = path.join(__dirname)
+    // const directoryPath = '.'
+    const directoryPath = path.join('.', 'dist')
     // List all files in the directory
     const files = fs.readdirSync(directoryPath)
     // Print all files
     files.forEach(function (file) {
-      core.debug(file)
+      core.info(file)
     })
 
     // Log the current timestamp, wait, then log the new timestamp
@@ -41,6 +42,7 @@ async function run() {
 
     // Set outputs for other workflow steps to use
     core.setOutput('version', version)
+    core.setOutput('pwd', directoryPath)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)
