@@ -31,6 +31,8 @@ async function run() {
       core.debug(file)      
     })
 
+
+
     // Log the current timestamp, wait, then log the new timestamp
     // core.debug("Started creating a version")
     // await createVersion(version, keyid, githubRepo, orgName, providerName, tftoken, ghtoken)
@@ -42,6 +44,7 @@ async function run() {
     // Set outputs for other workflow steps to use
     core.setOutput('version', version)
     core.setOutput('files', files)
+    core.setOutput('pwd', __dirname)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)
