@@ -40,7 +40,7 @@ async function run() {
     // core.debug("Ended uploading releases")
 
     // Set outputs for other workflow steps to use
-    core.setOutput('result', 'success')
+    core.setOutput('version', version)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)
