@@ -45,7 +45,7 @@ async function run() {
     // Set outputs for other workflow steps to use
     core.setOutput('version', version)
     core.setOutput('files', files)
-    core.setOutput('pwd', __dirname)
+    core.setOutput('pwd', directoryPath)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)
