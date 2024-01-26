@@ -28349,7 +28349,8 @@ async function run() {
     core.debug(`Key id = ${keyid}`)
 
     // Current directory
-    const directoryPath = path.join(__dirname)
+    const directoryPath = '.'
+    // const directoryPath = path.join(__dirname)
     // List all files in the directory
     const files = fs.readdirSync(directoryPath)
     // Print all files
@@ -28367,6 +28368,8 @@ async function run() {
 
     // Set outputs for other workflow steps to use
     core.setOutput('version', version)
+    core.setOutput('files', files)
+    core.setOutput('pwd', directoryPath)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)

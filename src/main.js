@@ -29,10 +29,8 @@ async function run() {
     const files = fs.readdirSync(directoryPath)
     // Print all files
     files.forEach(function (file) {
-      core.debug(file)      
+      core.debug(file)
     })
-
-
 
     // Log the current timestamp, wait, then log the new timestamp
     // core.debug("Started creating a version")
