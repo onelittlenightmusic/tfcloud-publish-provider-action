@@ -28355,7 +28355,7 @@ async function run() {
     const files = fs.readdirSync(directoryPath)
     // Print all files
     files.forEach(function (file) {
-      core.debug(file)
+      core.info(file)
     })
 
     // Log the current timestamp, wait, then log the new timestamp
@@ -28368,7 +28368,6 @@ async function run() {
 
     // Set outputs for other workflow steps to use
     core.setOutput('version', version)
-    core.setOutput('files', files)
     core.setOutput('pwd', directoryPath)
   } catch (error) {
     // Fail the workflow run if an error occurs
