@@ -63,6 +63,6 @@ jobs:
       - name: Print Output
         id: output
         run: echo "${{ steps.test-action.outputs.version }}"
-      - name: Print Output
+      - name: Print Output2
         id: output
         run: echo "${{ steps.test-action.outputs.pwd }}"
