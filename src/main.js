@@ -23,7 +23,8 @@ async function run() {
     core.debug(`Key id = ${keyid}`)
 
     // Current directory
-    const directoryPath = path.join(__dirname)
+    const directoryPath = '.'
+    // const directoryPath = path.join(__dirname)
     // List all files in the directory
     const files = fs.readdirSync(directoryPath)
     // Print all files
