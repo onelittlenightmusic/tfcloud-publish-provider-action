@@ -24710,10 +24710,6 @@ const fs = __nccwpck_require__(7147)
 const FormData = __nccwpck_require__(3186)
 const { env } = __nccwpck_require__(7282)
 
-const ORG_NAME = 'hal-ipsl'
-const providerName = 'slim'
-const version = '1.0.2'
-
 // Function to write version.json
 function writeVersionJson() {
   const versionData = {
@@ -24796,7 +24792,14 @@ async function uploadFile(filePath, uploadUrl) {
 }
 
 // Main function to coordinate the process
-async function createVersion(version, keyid, tftoken, ghtoken) {
+async function createVersion(
+  version,
+  keyid,
+  githubRepo,
+  providerName,
+  tftoken,
+  ghtoken
+) {
   writeVersionJson(version)
   const fileHeader = 'terraform-provider-' + providerName
   const versionData = await postVersion()
@@ -24804,8 +24807,8 @@ async function createVersion(version, keyid, tftoken, ghtoken) {
   const sumFileName = `${fileHeader}_${version}_SHA256SUMS`
   const sigFileName = `${sumFileName}.sig`
 
-  await downloadFile('hal-rd-tomoe/terraform-provider-slim', sumFileName)
-  await downloadFile('hal-rd-tomoe/terraform-provider-slim', sigFileName)
+  await downloadFile(githubRepo, sumFileName)
+  await downloadFile(githubRepo, sigFileName)
 
   const shasumsUploadUrl = versionData.data[-1].links['shasums-upload']
   const shasumsSigUploadUrl = versionData.data[-1].links['shasums-sig-upload']
@@ -24814,7 +24817,7 @@ async function createVersion(version, keyid, tftoken, ghtoken) {
   await uploadFile(sigFileName, shasumsSigUploadUrl)
 }
 
-main().catch(err => console.error(err))
+// createVersion().catch(err => console.error(err));
 
 
 /***/ }),
@@ -24864,7 +24867,7 @@ async function run() {
     // core.debug("Ended uploading releases")
 
     // Set outputs for other workflow steps to use
-    core.setOutput('result', 'success')
+    core.setOutput('version', version)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)
@@ -24971,7 +24974,7 @@ async function main(version) {
   }
 }
 
-main()
+// main()
 
 
 /***/ }),
