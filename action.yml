@@ -1,18 +1,26 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'tfcloud-publish-provider-action'
+description: 'Publish a Terraform provider to Terraform Cloud'
+author: 'Roy Osaki'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  version:
+    description: 'version'
     required: true
-    default: '1000'
+  keyid:
+    description: 'key id'
+    required: true
+  orgName:
+    description: 'organization name'
+    required: true
+  providerName:
+    description: 'provider name'
+    required: true
 
 # Define your outputs here.
 outputs:
   time:
-    description: 'Your output description here'
+    description: 'Result'
 
 runs:
   using: node20
