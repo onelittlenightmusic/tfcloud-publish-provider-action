@@ -13,7 +13,7 @@ async function run() {
     const ghtoken = process.env.GHTOKEN // Set GitHub API token
     const orgName = core.getInput('orgName', { required: true })
     const providerName = core.getInput('providerName', { required: true })
-    const githubRepo = core.getInput('githubRepo', { required: true })
+    // const githubRepo = core.getInput('githubRepo', { required: true })
 
     const version = core.getInput('version', { required: true })
     const keyid = core.getInput('keyid', { required: true })
